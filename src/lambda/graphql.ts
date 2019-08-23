@@ -33,7 +33,7 @@ const resolvers = {
       return "Hello, world!";
     },
     allAuthors: (root, args, context) => {
-      return context.db.authors;
+      return context.db;
     },
     author: (root, args, context) => {
       return;
@@ -49,17 +49,16 @@ interface MyContext {
   db: Author[];
 }
 
-const server: ApolloServer = new ApolloServer({
+const server = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }): MyContext => ({
-    ...req,
     db: authors
   }),
   playground: true,
   introspection: true
 });
 
-const handler: Handler = server.createHandler();
+const handler = server.createHandler();
 
 export { handler };
