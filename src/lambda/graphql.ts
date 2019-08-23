@@ -55,8 +55,8 @@ const server = new ApolloServer({
   context: ({ req }): MyContext => ({
     db: authors
   }),
-  playground: true,
-  introspection: true
+  playground: true
+  //   introspection: true
 });
 
 const handler = server.createHandler();
