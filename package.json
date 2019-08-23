@@ -1,0 +1,23 @@
+{
+  "name": "jason-api",
+  "author": "Nicky Meuleman <nicky.dev@outlook.com>",
+  "version": "0.0.1",
+  "private": false,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "echo boop",
+    "start:lambda": "netlify-lambda serve src/lambda",
+    "build:lambda": "netlify-lambda build src/lambda"
+  },
+  "dependencies": {
+    "netlify-lambda": "^1.6.3"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/aws-lambda": "^8.10.31",
+    "@types/node": "^12.7.2",
+    "typescript": "^3.5.3"
+  }
+}
