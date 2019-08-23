@@ -1,4 +1,3 @@
-import { Handler } from "aws-lambda";
 import { ApolloServer, gql } from "apollo-server-lambda";
 
 const typeDefs = gql`
@@ -55,10 +54,19 @@ const server = new ApolloServer({
   context: ({ req }): MyContext => ({
     db: authors
   }),
-  playground: true
-  //   introspection: true
+  playground: true,
+  introspection: true
 });
 
 const handler = server.createHandler();
 
 export { handler };
+
+// on yarn build:lambda
+
+// WARNING in /home/nicky/projects/jason-api/node_modules/subscriptions-transport-ws/node_modules/ws/lib/buffer-util.js
+// Module not found: Error: Can't resolve 'bufferutil' in '/home/nicky/projects/jason-api/node_modules/subscriptions-transport-ws/node_modules/ws/lib'
+// WARNING in /home/nicky/projects/jason-api/node_modules/subscriptions-transport-ws/node_modules/ws/lib/validation.js
+// Module not found: Error: Can't resolve 'utf-8-validate' in '/home/nicky/projects/jason-api/node_modules/subscriptions-transport-ws/node_modules/ws/lib'
+
+// despite those errors, ./netlify/functions/graphql still works
