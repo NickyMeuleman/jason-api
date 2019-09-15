@@ -6,14 +6,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "npm run build:lambda",
-    "start:lambda": "netlify-lambda serve src/lambda",
-    "build:lambda": "netlify-lambda build src/lambda"
+    "build": "yarn run build:lambda",
+    "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js",
+    "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.8.2",
     "graphql": "^14.5.0",
-    "netlify-lambda": "^1.6.3"
+    "netlify-lambda": "^1.6.3",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-object-assign": "^7.2.0",
