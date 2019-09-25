@@ -2,10 +2,13 @@
 
 Too many Jasons?
 
+## Is the `firstName` field just a hardcoded `"Jason"` string?
+
+Yes, yes it is.
+
 ## dev notes
 
 - add prettier and eslint
-- strict things up in tsconfig again
-- type things in the resolver
-- replace placeholder database
-- alloz unused function parameters, but not other vars
+- ?Gatsby frontend
+- ?frontend talk to backend with graphql hooks
+- likes, will help me learn more things. Doesn't matter it doesn't make sense for a Jason to have upvotes, do it FOR SCIENCE

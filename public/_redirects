@@ -1,1 +1,2 @@
 /hello /.netlify/functions/hello 200
+/graphql /.netlify/functions/graphql 200

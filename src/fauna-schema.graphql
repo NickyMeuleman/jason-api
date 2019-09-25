@@ -1,0 +1,10 @@
+type Query {
+  allJasons: [Jason!]
+  jasonByTwitter(twitter: String!): Jason
+  jasonById(id: ID!): Jason
+}
+type Jason {
+  id: ID!
+  name: String!
+  twitter: String
+}

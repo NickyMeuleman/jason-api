@@ -7,13 +7,23 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn run build:lambda",
+    "start": "yarn run start:lambda",
     "start:lambda": "netlify-lambda serve src/lambda --config webpack.functions.js",
     "build:lambda": "netlify-lambda build src/lambda --config webpack.functions.js"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "apollo-link-http": "^1.5.16",
     "apollo-server-lambda": "^2.8.2",
+    "cuid": "^2.1.6",
+    "dotenv": "^8.1.0",
+    "faunadb": "^2.8.1",
     "graphql": "^14.5.0",
+    "graphql-import-loader": "^0.2.1",
+    "graphql-tools": "^4.0.5",
     "netlify-lambda": "^1.6.3",
+    "node-fetch": "^2.6.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {

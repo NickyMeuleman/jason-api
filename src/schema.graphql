@@ -1,0 +1,15 @@
+type Query {
+  hello: String!
+  allJasons: [Jason!]
+  jasonByTwitter(twitter: String!): Jason
+  jason(id: ID!): Jason!
+}
+type Jason {
+  id: ID!
+  firstName: String!
+  name: String!
+  twitter: String
+}
+type Mutation {
+  createJason(name: String!, twitter: String): Jason!
+}
