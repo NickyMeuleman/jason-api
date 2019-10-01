@@ -1,4 +1,8 @@
 node_modules
 .netlify
 /lambda
+.cache
+/public
+
 .env
+colors.css
