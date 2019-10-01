@@ -9,6 +9,7 @@ type Jason {
   firstName: String!
   name: String!
   twitter: String
+  likes: Int!
 }
 type Mutation {
   createJason(name: String!, twitter: String): Jason!

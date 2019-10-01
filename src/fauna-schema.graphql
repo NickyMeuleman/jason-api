@@ -7,4 +7,5 @@ type Jason {
   id: ID!
   name: String!
   twitter: String
+  likes: Int!
 }

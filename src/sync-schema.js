@@ -27,7 +27,7 @@ function createFaunaGraphQL() {
     headers: { Authorization: `Basic ${token}` }
   };
 
-  fetch("https://graphql.fauna.com/import?mode=override", options)
+  fetch("https://graphql.fauna.com/import", options)
     .then(res => res.text())
     .then(body => {
       console.log(
