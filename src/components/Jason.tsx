@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 export interface IJason {
   id: string;
   name: string;
   twitter?: string;
-  waves: number;
+  likes: number;
 }
 
 interface IProps {
@@ -34,29 +36,44 @@ const WaveSection = styled.div`
     border-radius: 6px;
     display: inline-block;
     line-height: 24px;
-    min-width: 168px;
+    min-width: 180px;
     padding: 7px 15px;
-    position: relative;
     text-align: center;
     transition: 0.2s ease;
     transition-property: background-color, border, box-shadow;
     vertical-align: middle;
     width: auto;
-    background-color: var(--primary);
-    color: var(--bg);
-    &:hover {
+    &:hover:enabled {
       background-color: var(--altprimary);
       color: var(--bg);
     }
   }
 `;
 
+const WAVE_MUTATION = gql`
+  mutation WaveToJason($id: ID!, $waves: Int!) {
+    updateJason(id: $id, updates: { likes: $waves }) {
+      id
+      name
+      likes
+    }
+  }
+`;
+
 const Jason: React.FC<IProps> = ({ jason }) => {
-  const [waves, setWaves] = React.useState(jason.waves || 0);
-  const onWaveClick = () => {
-    // send graphQL mutation here
-    setWaves(prevWaves => prevWaves + 1);
+  const [waves, setWaves] = React.useState(jason.likes || 0);
+  const [didWave, setDidWave] = React.useState(false);
+  const [waveToJason] = useMutation(WAVE_MUTATION);
+
+  const onWaveClick = async id => {
+    // optimistic setWave is optimistic
+    setDidWave(true);
+    const { data } = await waveToJason({
+      variables: { id, waves: jason.likes + 1 }
+    });
+    data && setWaves(data.updateJason.likes);
   };
+
   return (
     <ListItem>
       <NameSection>
@@ -75,7 +92,7 @@ const Jason: React.FC<IProps> = ({ jason }) => {
           `}
         >
           <a
-            href={"https:www.google.be"}
+            href={`https://www.twitter.com/${jason.twitter}`}
             css={css`
               text-decoration: none;
               color: inherit;
@@ -94,16 +111,23 @@ const Jason: React.FC<IProps> = ({ jason }) => {
         >
           {waves}
         </span>
-        <button onClick={onWaveClick}>
+        <button
+          disabled={didWave}
+          onClick={() => onWaveClick(jason.id)}
+          css={css`
+            background-color: ${didWave ? "var(--altbg)" : "var(--primary)"};
+            color: ${didWave ? "var(--primary)" : "var(--bg)"};
+          `}
+        >
           <span
             css={css`
               font-size: 1.5rem;
               padding-right: 0.1rem;
             `}
           >
-            👋
+            {didWave ? "👍" : "👋"}
           </span>
-          Wave to Jason!
+          {didWave ? "Jason thanks you!" : "Wave to Jason!"}
         </button>
       </WaveSection>
     </ListItem>

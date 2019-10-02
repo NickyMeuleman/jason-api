@@ -13,4 +13,18 @@ type Jason {
 }
 type Mutation {
   createJason(name: String!, twitter: String): Jason!
+  createJasons(jasons: [CreateJasonInput!]!): [Jason!]!
+  updateJason(id: ID!, updates: UpdateJasonInput!): Jason!
+}
+
+input CreateJasonInput {
+  name: String!
+  twitter: String
+  likes: Int
+}
+
+input UpdateJasonInput {
+  name: String
+  twitter: String
+  likes: Int
 }

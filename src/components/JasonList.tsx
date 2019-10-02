@@ -19,11 +19,11 @@ const JasonList: React.FC<IProps> = ({ jasons }) => {
   return (
     <div>
       <ListHeader>
-        <div>Jason</div>
-        <div>Waves</div>
+        <span>Jason</span>
+        <span>Waves</span>
       </ListHeader>
       {jasons.length === 0 ? (
-        <Jason jason={{ id: "empty", name: "Placeholder Jason", waves: 0 }} />
+        <Jason jason={{ id: "empty", name: "Placeholder Jason", likes: 0 }} />
       ) : (
         <ul
           css={css`
