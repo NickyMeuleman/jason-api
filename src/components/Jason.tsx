@@ -51,10 +51,8 @@ const WaveSection = styled.div`
 `;
 
 const WAVE_MUTATION = gql`
-  mutation WaveToJason($id: ID!, $waves: Int!) {
-    updateJason(id: $id, updates: { likes: $waves }) {
-      id
-      name
+  mutation WaveToJason($id: ID!) {
+    upvoteJason(id: $id) {
       likes
     }
   }
@@ -69,9 +67,9 @@ const Jason: React.FC<IProps> = ({ jason }) => {
     // optimistic setWave is optimistic
     setDidWave(true);
     const { data } = await waveToJason({
-      variables: { id, waves: jason.likes + 1 }
+      variables: { id }
     });
-    data && setWaves(data.updateJason.likes);
+    data && setWaves(data.upvoteJason.likes);
   };
 
   return (

@@ -5,7 +5,7 @@ import { introspectSchema, makeRemoteExecutableSchema } from "graphql-tools";
 
 async function handler(event, context) {
   /** required for Fauna GraphQL auth */
-  if (!process.env.FAUNADB_SERVER_SECRET) {
+  if (!process.env.FAUNADB_SERVER_READ_SECRET) {
     const msg = `
     FAUNADB_SERVER_SECRET missing. 
     Did you forget to install the fauna addon or forgot to run inside Netlify Dev?
@@ -17,7 +17,7 @@ async function handler(event, context) {
     };
   }
   const b64encodedSecret = Buffer.from(
-    process.env.FAUNADB_SERVER_SECRET + ":" // weird but they
+    process.env.FAUNADB_SERVER_READ_SECRET + ":" // weird but they
   ).toString("base64");
   const headers = { Authorization: `Basic ${b64encodedSecret}` };
 
