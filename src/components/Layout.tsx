@@ -27,6 +27,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
     }
   `);
   const imageUrl = `${siteMetadata.siteUrl}${file.publicURL}`;
+  const siteUrl = `${siteMetadata.siteUrl}/`;
   return (
     <>
       <Global
@@ -59,10 +60,11 @@ const Layout: React.FC<IProps> = ({ children }) => {
       <Helmet>
         <html lang="en" />
         <title>{siteMetadata.title}</title>
+        <link rel="canonical" href={siteUrl} />
         <meta name="description" content={siteMetadata.description} />
         <meta name="image" content={imageUrl} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={siteMetadata.siteUrl} />
+        <meta property="og:url" content={siteUrl} />
         <meta property="og:title" content={siteMetadata.title} />
         <meta property="og:description" content={siteMetadata.description} />
         <meta property="og:image" content={imageUrl} />
