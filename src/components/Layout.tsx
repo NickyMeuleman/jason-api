@@ -61,9 +61,11 @@ const Layout: React.FC<IProps> = ({ children }) => {
         <title>{siteMetadata.title}</title>
         <meta name="description" content={siteMetadata.description} />
         <meta name="image" content={imageUrl} />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={siteMetadata.siteUrl} />
         <meta property="og:title" content={siteMetadata.title} />
         <meta property="og:description" content={siteMetadata.description} />
+        <meta property="og:image" content={imageUrl} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content={siteMetadata.twitter} />
         <meta name="twitter:title" content={siteMetadata.title} />
