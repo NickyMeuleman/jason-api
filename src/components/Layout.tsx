@@ -28,6 +28,7 @@ const Layout: React.FC<IProps> = ({ children }) => {
   `);
   const imageUrl = `${siteMetadata.siteUrl}${file.publicURL}`;
   const siteUrl = `${siteMetadata.siteUrl}/`;
+
   return (
     <>
       <Global
