@@ -25,7 +25,7 @@ const IndexPage = () => {
       {error && (
         <JasonList
           jasons={[
-            { id: error.name, name: error.message, twitter: "ERROR", waves: 0 }
+            { id: error.name, name: error.message, twitter: "ERROR", likes: 0 }
           ]}
         />
       )}

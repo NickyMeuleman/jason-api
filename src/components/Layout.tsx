@@ -1,11 +1,32 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css, Global } from "@emotion/core";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 import Header from "./Header";
 
 interface IProps {}
 
 const Layout: React.FC<IProps> = ({ children }) => {
+  const {
+    site: { siteMetadata },
+    file
+  } = useStaticQuery(graphql`
+    query GetSiteMetadata {
+      site {
+        siteMetadata {
+          title
+          description
+          siteUrl
+          twitter
+        }
+      }
+      file(name: { eq: "social-logo" }) {
+        publicURL
+      }
+    }
+  `);
+  const imageUrl = `${siteMetadata.siteUrl}${file.publicURL}`;
   return (
     <>
       <Global
@@ -35,6 +56,20 @@ const Layout: React.FC<IProps> = ({ children }) => {
           }
         `}
       />
+      <Helmet>
+        <html lang="en" />
+        <title>{siteMetadata.title}</title>
+        <meta name="description" content={siteMetadata.description} />
+        <meta name="image" content={imageUrl} />
+        <meta property="og:url" content={siteMetadata.siteUrl} />
+        <meta property="og:title" content={siteMetadata.title} />
+        <meta property="og:description" content={siteMetadata.description} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content={siteMetadata.twitter} />
+        <meta name="twitter:title" content={siteMetadata.title} />
+        <meta name="twitter:description" content={siteMetadata.description} />
+        <meta name="twitter:image" content={imageUrl} />
+      </Helmet>
       <Header />
       <main
         css={css`
