@@ -28,7 +28,8 @@ const Layout: React.FC<IProps> = ({ children }) => {
           }
           body {
             margin: 0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont,
+              "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, Arial, sans-serif;
             color: var(--text);
             background-color: var(--bg);
           }
