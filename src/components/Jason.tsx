@@ -29,8 +29,8 @@ const NameSection = styled.div``;
 const WaveSection = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   button {
-    margin-left: 1rem;
     border: 1px solid #e9ebeb;
     border-bottom: 1px solid #e1e2e4;
     border-radius: 6px;
@@ -47,6 +47,9 @@ const WaveSection = styled.div`
       background-color: var(--altprimary);
       color: var(--bg);
     }
+  }
+  @media (min-width: 700px) {
+    flex-direction: row;
   }
 `;
 
@@ -105,6 +108,10 @@ const Jason: React.FC<IProps> = ({ jason }) => {
           css={css`
             font-size: 1.5rem;
             font-weight: 600;
+            margin: 0.5rem;
+            @media (min-width: 700px) {
+              margin: 1rem;
+            }
           `}
         >
           {waves}

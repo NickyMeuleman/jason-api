@@ -17,7 +17,11 @@ const ListHeader = styled.div`
 
 const JasonList: React.FC<IProps> = ({ jasons }) => {
   return (
-    <div>
+    <div
+      css={css`
+        margin: 2rem 0;
+      `}
+    >
       <ListHeader>
         <span>Jason</span>
         <span>Waves</span>

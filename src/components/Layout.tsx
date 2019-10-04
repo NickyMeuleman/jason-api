@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { css, Global } from "@emotion/core";
 import Helmet from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import Header from "./Header";
+import Footer from "./Footer";
 
 interface IProps {}
 
@@ -79,12 +79,12 @@ const Layout: React.FC<IProps> = ({ children }) => {
       <main
         css={css`
           margin: 0 auto;
-          padding: 0 1.4rem;
-          max-width: 60rem;
+          max-width: 50rem;
         `}
       >
         {children}
       </main>
+      <Footer />
     </>
   );
 };
