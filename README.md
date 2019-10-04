@@ -6,8 +6,7 @@ Too many Jasons?
 
 Yes, yes it is.
 
-## dev notes
+## Notes
 
-- add prettier and eslint
-- ?frontend talk to backend with graphql hooks
-- likes, will help me learn more things. Doesn't matter it doesn't make sense for a Jason to have upvotes, do it FOR SCIENCE
+Some mutation are commented out in the schema (as are their respective resolvers).
+They are fully functional, but disabled because the GraphQL playground is open and I don't want the internet to have free reign over the database 🤷‍♂

@@ -1,17 +1,17 @@
-const proxy = require("http-proxy-middleware");
+const proxy = require(`http-proxy-middleware`);
 
 module.exports = {
   siteMetadata: {
-    title: "JaSON API",
-    description: "There's a Jason in this JSON",
-    siteUrl: "https://jason-api.netlify.com",
-    twitter: "@NMeuleman"
+    title: `JaSON API`,
+    description: `There's a Jason in this JSON`,
+    siteUrl: `https://jason-api.netlify.com`,
+    twitter: `@NMeuleman`
   },
   developMiddleware: app => {
     app.use(
-      "/.netlify/functions/",
+      `/.netlify/functions/`,
       proxy({
-        target: "http://localhost:9000"
+        target: `http://localhost:9000`
       })
     );
   },

@@ -20,13 +20,11 @@ const Foot = styled.footer`
   }
 `;
 
-const Footer: React.FC<IProps> = () => {
-  return (
-    <Foot>
-      <a href="https://github.com/NickyMeuleman/jason-api">Source code</a>
-      <a href="https://twitter.com/nmeuleman">Created by Nicky Meuleman</a>
-    </Foot>
-  );
-};
+const Footer: React.FC<IProps> = () => (
+  <Foot>
+    <a href="https://github.com/NickyMeuleman/jason-api">Source code</a>
+    <a href="https://twitter.com/nmeuleman">Created by Nicky Meuleman</a>
+  </Foot>
+);
 
 export default Footer;

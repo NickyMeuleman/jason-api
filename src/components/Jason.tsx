@@ -3,13 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-
-export interface IJason {
-  id: string;
-  name: string;
-  twitter?: string;
-  likes: number;
-}
+import { IJason } from "../types";
 
 interface IProps {
   jason: IJason;
@@ -66,7 +60,7 @@ const Jason: React.FC<IProps> = ({ jason }) => {
   const [didWave, setDidWave] = React.useState(false);
   const [waveToJason] = useMutation(WAVE_MUTATION);
 
-  const onWaveClick = async id => {
+  const onWaveClick = async (id: string): Promise<void> => {
     // optimistic setWave is optimistic
     setDidWave(true);
     const { data } = await waveToJason({
@@ -118,10 +112,10 @@ const Jason: React.FC<IProps> = ({ jason }) => {
         </span>
         <button
           disabled={didWave}
-          onClick={() => onWaveClick(jason.id)}
+          onClick={(): Promise<void> => onWaveClick(jason.id)}
           css={css`
-            background-color: ${didWave ? "var(--altbg)" : "var(--primary)"};
-            color: ${didWave ? "var(--primary)" : "var(--bg)"};
+            background-color: ${didWave ? `var(--altbg)` : `var(--primary)`};
+            color: ${didWave ? `var(--primary)` : `var(--bg)`};
           `}
         >
           <span
@@ -130,9 +124,9 @@ const Jason: React.FC<IProps> = ({ jason }) => {
               padding-right: 0.1rem;
             `}
           >
-            {didWave ? "👍" : "👋"}
+            {didWave ? `👍` : `👋`}
           </span>
-          {didWave ? "Jason thanks you!" : "Wave to Jason!"}
+          {didWave ? `Jason thanks you!` : `Wave to Jason!`}
         </button>
       </WaveSection>
     </ListItem>

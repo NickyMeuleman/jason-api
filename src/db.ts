@@ -11,7 +11,7 @@ dotenv.config();
 function createClient(): IFaunaContext {
   if (!process.env.FAUNADB_SERVER_SECRET) {
     throw new Error(
-      "No FAUNADB_SERVER_SECRET in environment, skipping context setup"
+      `No FAUNADB_SERVER_SECRET in environment, skipping context setup`
     );
   }
 

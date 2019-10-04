@@ -3,6 +3,7 @@ node_modules
 /lambda
 .cache
 /public
+.vscode
 
 .env
 colors.css

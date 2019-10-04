@@ -3,6 +3,8 @@ import { createHttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import { introspectSchema, makeRemoteExecutableSchema } from "graphql-tools";
 
+/* eslint-disable no-console, @typescript-eslint/explicit-function-return-type */
+
 async function handler(event, context) {
   /** required for Fauna GraphQL auth */
   if (!process.env.FAUNADB_SERVER_READ_SECRET) {
@@ -17,13 +19,13 @@ async function handler(event, context) {
     };
   }
   const b64encodedSecret = Buffer.from(
-    process.env.FAUNADB_SERVER_READ_SECRET + ":" // weird but they
-  ).toString("base64");
+    `${process.env.FAUNADB_SERVER_READ_SECRET}:` // weird but they
+  ).toString(`base64`);
   const headers = { Authorization: `Basic ${b64encodedSecret}` };
 
   /** standard creation of apollo-server executable schema */
   const link = createHttpLink({
-    uri: "https://graphql.fauna.com/graphql", // modify as you see fit
+    uri: `https://graphql.fauna.com/graphql`, // modify as you see fit
     fetch,
     headers
   });

@@ -40,26 +40,27 @@ const GraphQL = styled.a`
   }
 `;
 
-const Header: React.FC<IProps> = () => {
-  return (
-    <Head>
-      <Brand>
-        <span>{"{ "}</span>J
-        <span
-          css={css`
-            color: var(--altprimary);
-          `}
-        >
-          a
-        </span>
-        SON API
-        <span>{" }"}</span>
-      </Brand>
-      <GraphQL href={"/.netlify/functions/graphql"}>
-        GraphQL Playground 👉
-      </GraphQL>
-    </Head>
-  );
-};
+const Header: React.FC<IProps> = () => (
+  <Head>
+    <Brand>
+      <span>{`{ `}</span>J
+      <span
+        css={css`
+          color: var(--altprimary);
+        `}
+      >
+        a
+      </span>
+      SON API
+      <span>{` }`}</span>
+    </Brand>
+    <GraphQL href="/.netlify/functions/graphql">
+      GraphQL Playground
+      <span role="img" aria-label="hand pointing to right">
+        👉
+      </span>
+    </GraphQL>
+  </Head>
+);
 
 export default Header;

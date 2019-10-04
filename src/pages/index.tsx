@@ -1,7 +1,7 @@
 import React from "react";
-import JasonList from "../components/JasonList";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import JasonList from "../components/JasonList";
 import Layout from "../components/Layout";
 
 const APOLLO_QUERY = gql`
@@ -15,7 +15,7 @@ const APOLLO_QUERY = gql`
   }
 `;
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   const { loading, error, data } = useQuery(APOLLO_QUERY);
 
   return (
@@ -25,7 +25,7 @@ const IndexPage = () => {
       {error && (
         <JasonList
           jasons={[
-            { id: error.name, name: error.message, twitter: "ERROR", likes: 0 }
+            { id: error.name, name: error.message, twitter: `ERROR`, likes: 0 }
           ]}
         />
       )}
