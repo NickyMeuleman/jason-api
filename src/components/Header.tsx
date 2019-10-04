@@ -55,7 +55,7 @@ const Header: React.FC<IProps> = () => (
       <span>{` }`}</span>
     </Brand>
     <GraphQL href="/.netlify/functions/graphql">
-      GraphQL Playground
+      <span>GraphQL Playground </span>
       <span role="img" aria-label="hand pointing to right">
         👉
       </span>
