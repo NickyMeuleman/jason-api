@@ -27,6 +27,14 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `JASONAPI`,
+        fieldName: `JasonAPI`,
+        url: `https://jason-api.netlify.com/.netlify/functions/graphql`
+      }
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `JaSON API`,

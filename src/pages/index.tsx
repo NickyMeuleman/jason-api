@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import JasonList from "../components/JasonList";
@@ -15,13 +16,30 @@ const APOLLO_QUERY = gql`
   }
 `;
 
-const IndexPage: React.FC = () => {
+export const GATSBY_QUERY = graphql`
+  {
+    JasonAPI {
+      allJasons {
+        likes
+        name
+        twitter
+        id
+      }
+    }
+  }
+`;
+
+const IndexPage: React.FC<any> = ({
+  data: {
+    JasonAPI: { allJasons }
+  }
+}) => {
   const { loading, error, data } = useQuery(APOLLO_QUERY);
 
   return (
     <Layout>
       <h1>Look at all these Jasons!</h1>
-      {loading && <JasonList jasons={[]} />}
+      {loading && <JasonList jasons={allJasons} />}
       {error && (
         <JasonList
           jasons={[
