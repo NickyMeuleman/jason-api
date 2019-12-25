@@ -6,6 +6,7 @@ import { IJason } from "../types";
 
 interface IProps {
   jasons: IJason[];
+  loading?: boolean;
 }
 
 const ListHeader = styled.div`
@@ -16,7 +17,7 @@ const ListHeader = styled.div`
   padding: 1rem 1.2rem;
 `;
 
-const JasonList: React.FC<IProps> = ({ jasons }) => (
+const JasonList: React.FC<IProps> = ({ jasons, loading }) => (
   <div
     css={css`
       margin: 2rem 0;
@@ -36,7 +37,7 @@ const JasonList: React.FC<IProps> = ({ jasons }) => (
         `}
       >
         {jasons.map(jason => (
-          <Jason key={jason.id} jason={jason} />
+          <Jason key={jason.id} jason={jason} loading={loading} />
         ))}
       </ul>
     )}

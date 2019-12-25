@@ -39,7 +39,7 @@ const IndexPage: React.FC<any> = ({
   return (
     <Layout>
       <h1>Look at all these Jasons!</h1>
-      {loading && <JasonList jasons={allJasons} />}
+      {loading && <JasonList loading jasons={allJasons} />}
       {error && (
         <JasonList
           jasons={[

@@ -1,0 +1,11 @@
+node_modules
+.netlify
+/lambda
+.cache
+/public
+.vscode
+
+.env
+colors.css
+
+*.d.ts

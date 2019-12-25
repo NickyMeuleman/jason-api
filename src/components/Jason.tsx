@@ -7,6 +7,7 @@ import { IJason } from "../types";
 
 interface IProps {
   jason: IJason;
+  loading?: boolean;
 }
 
 const ListItem = styled.li`
@@ -55,7 +56,7 @@ const WAVE_MUTATION = gql`
   }
 `;
 
-const Jason: React.FC<IProps> = ({ jason }) => {
+const Jason: React.FC<IProps> = ({ jason, loading }) => {
   const [waves, setWaves] = React.useState(jason.likes || 0);
   const [didWave, setDidWave] = React.useState(false);
   const [waveToJason] = useMutation(WAVE_MUTATION);
@@ -103,6 +104,7 @@ const Jason: React.FC<IProps> = ({ jason }) => {
             font-size: 1.5rem;
             font-weight: 600;
             margin: 0.5rem;
+            color: ${loading ? `#eee` : `inherit`};
             @media (min-width: 700px) {
               margin: 1rem;
             }

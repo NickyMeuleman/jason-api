@@ -31,7 +31,7 @@ module.exports = {
       options: {
         typeName: `JASONAPI`,
         fieldName: `JasonAPI`,
-        url: `https://jason-api.netlify.com/.netlify/functions/graphql`
+        url: `http://localhost:9000/.netlify/functions/graphql`
       }
     },
     {
