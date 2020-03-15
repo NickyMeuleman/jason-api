@@ -27,13 +27,21 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-graphql`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        typeName: `JASONAPI`,
-        fieldName: `JasonAPI`,
-        url: `http://localhost:9000/.netlify/functions/graphql`
+        name: `data`,
+        path: `${__dirname}/src/data/`
       }
     },
+    `gatsby-transformer-json`,
+    // {
+    //   resolve: `gatsby-source-graphql`,
+    //   options: {
+    //     typeName: `JASONAPI`,
+    //     fieldName: `JasonAPI`,
+    //     url: `http://localhost:9000/.netlify/functions/graphql`
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

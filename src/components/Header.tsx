@@ -54,7 +54,13 @@ const Header: React.FC<IProps> = () => (
       SON API
       <span>{` }`}</span>
     </Brand>
-    <GraphQL href="/.netlify/functions/graphql">
+    {/* <GraphQL href="/.netlify/functions/graphql">
+      <span>GraphQL Playground </span>
+      <span role="img" aria-label="hand pointing to right">
+        👉
+      </span>
+    </GraphQL> */}
+    <GraphQL href="#functions-offline">
       <span>GraphQL Playground </span>
       <span role="img" aria-label="hand pointing to right">
         👉

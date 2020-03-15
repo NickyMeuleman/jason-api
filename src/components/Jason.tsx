@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { useMutation } from "@apollo/react-hooks";
+// import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { IJason } from "../types";
+import useFakeMutation from "../useFakeMutation";
 
 interface IProps {
   jason: IJason;
@@ -59,7 +60,8 @@ const WAVE_MUTATION = gql`
 const Jason: React.FC<IProps> = ({ jason, loading }) => {
   const [waves, setWaves] = React.useState(jason.likes || 0);
   const [didWave, setDidWave] = React.useState(false);
-  const [waveToJason] = useMutation(WAVE_MUTATION);
+  // const [waveToJason] = useMutation(WAVE_MUTATION);
+  const [waveToJason] = useFakeMutation(WAVE_MUTATION);
 
   const onWaveClick = async (id: string): Promise<void> => {
     // optimistic setWave is optimistic
@@ -67,7 +69,8 @@ const Jason: React.FC<IProps> = ({ jason, loading }) => {
     const { data } = await waveToJason({
       variables: { id }
     });
-    data && setWaves(data.upvoteJason.likes);
+    // data && setWaves(data.upvoteJason.likes);
+    data && setWaves(jason.likes + 1);
   };
 
   return (
